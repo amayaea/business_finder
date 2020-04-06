@@ -3,7 +3,7 @@ const app = express();
 const db = require("./server/db");
 const query = require("./server/queries");
 
-app.get("/api/customers", (req, res) => {
+app.get("/api/businesses", (req, res) => {
   db.query(query.selectByZip(28078), (err, result) => {
     if (err) throw err;
     console.log(result);

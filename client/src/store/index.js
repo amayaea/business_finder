@@ -1,12 +1,20 @@
-import {createStore, applyMiddleware, compose} from 'redux';
-import thunk from 'redux-thunk';
-import rootReducer from './reducers';
+import { createStore, combineReducers, applyMiddleware } from "redux";
+import { createLogger } from "redux-logger";
+import thunkMiddleware from "redux-thunk";
+import { composeWithDevTools } from "redux-devtools-extension";
+import businesses from "./businesses";
+import singleBusiness from "./singleBusiness";
 
-const middleware = [
-  thunk
-]
-const withDevTools = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const reducer = combineReducers({
+  businesses,
+  singleBusiness,
+});
 
-export default createStore(rootReducer, withDevTools(
-  applyMiddleware(...middleware)
-))
+const middleware = composeWithDevTools(
+  applyMiddleware(thunkMiddleware, createLogger({ collapsed: true }))
+);
+const store = createStore(reducer, middleware);
+
+export default store;
+export * from "./businesses";
+export * from "./singleBusiness";
