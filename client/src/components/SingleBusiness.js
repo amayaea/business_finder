@@ -2,20 +2,18 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
 import { getBusiness } from "../store";
+import Container from "react-bootstrap/Container";
 
 class SingleBusiness extends Component {
-  async componentDidMount() {
-    console.log("big poopoo");
+  componentWillMount() {
     const businessId = this.props.match.params.businessId;
-    await this.props.getBusiness(businessId);
+    this.props.getBusiness(businessId);
   }
 
   render() {
-    return (
-      <div>
-        <h2>Single Business</h2>
-      </div>
-    );
+    const business = this.props.singleBusiness;
+    console.log(business);
+    return <Container>{business && <h2>{business.name}</h2>}</Container>;
   }
 }
 

@@ -5,7 +5,7 @@ const queries = require("./server/queries");
 
 // Search for businesses by zipcode
 app.get("/api/businesses", (req, res) => {
-  db.query(queries.selectAll, (err, result) => {
+  db.query(queries.selectAll(), (err, result) => {
     if (err) throw err;
     res.send(result);
   });

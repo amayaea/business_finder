@@ -7,7 +7,7 @@ const queries = {
     WHERE b.business_id = '${businessId}';`,
   selectByZip: (zipCode) =>
     `SELECT * FROM business WHERE postal_code = '${zipCode}'`,
-  selectAll: () => `SELECT * FROM business`,
+  selectAll: () => `SELECT * FROM business LIMIT 100`,
   selectByCity: (city) => `SELECT * FROM business WHERE city = '${city}'`,
   selectByState: (state) => `SELECT * FROM business WHERE city = '${state}'`,
   searchByName: (search) =>

@@ -15,12 +15,15 @@
   "devDependencies": {},
   "dependencies": {
     "axios": "^0.19.2",
+    "bootstrap": "^4.4.1",
     "concurrently": "^4.1.1",
     "express": "^4.17.1",
     "mysql": "^2.18.1",
     "nodemon": "^1.19.1",
+    "react-bootstrap": "^1.0.0",
     "react-redux": "^7.2.0",
     "react-router-dom": "^5.1.2",
+    "react-star-rating-component": "^1.4.1",
     "redux-devtools-extension": "^2.13.8",
     "redux-logger": "^3.0.6"
   }

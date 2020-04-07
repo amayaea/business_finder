@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import Routes from "./routes";
 
@@ -8,7 +7,7 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
+          <img src="/logo.png" alt="logo" width={64} height={64} />
           <h1 className="App-title">Business Finder</h1>
         </header>
         <Routes />
