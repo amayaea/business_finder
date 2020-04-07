@@ -27,9 +27,10 @@ const setBusiness = (business) => ({
 /**
  * THUNK CREATORS
  */
-export const getBusinesses = () => async (dispatch) => {
+export const getBusiness = (businessId) => async (dispatch) => {
   try {
-    // TODO
+    const business = await axios.get(`/api/business/:${businessId}`);
+    dispatch(setBusiness(business.data));
   } catch (err) {
     console.error(err);
   }

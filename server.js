@@ -24,12 +24,15 @@ app.get("/businesses/zipcode/:zip", (req, res, next) => {
 });
 
 // Get one business by businessId
-app.get("/api/businesses/:businessId", (req, res, next) => {
+app.get("/api/business/:businessId", (req, res, next) => {
   try {
-    db.query(queries.selectOne(req.params.userId), (err, result) => {
-      if (err) throw err;
-      res.send(result);
-    });
+    db.query(
+      queries.selectOne(req.params.businessId.substring(1)),
+      (err, result) => {
+        if (err) throw err;
+        res.send(result);
+      }
+    );
   } catch (err) {
     next(err);
   }

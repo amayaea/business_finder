@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
 import { getBusinesses } from "../store";
-import { SingleBusiness } from "./SingleBusiness";
 
 class Businesses extends Component {
   static propTypes = {
@@ -15,20 +14,15 @@ class Businesses extends Component {
     businesses: [],
   };
 
-  componentWillMount() {
+  async componentWillMount() {
     console.log("poop");
-    this.props.getBusinesses();
+    await this.props.getBusinesses();
   }
 
   render() {
     return (
       <div>
         <h2>Businesses</h2>
-        <ul>
-          {this.props.businesses.map((business) => (
-            <SingleBusiness business={business} key={business.business_id} />
-          ))}
-        </ul>
       </div>
     );
   }
