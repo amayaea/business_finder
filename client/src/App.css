@@ -12,3 +12,8 @@
 .App-intro {
   font-size: large;
 }
+
+.Business-list.btn {
+  padding-left: 0;
+  margin-left: 0;
+}

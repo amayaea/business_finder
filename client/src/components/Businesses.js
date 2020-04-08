@@ -19,7 +19,6 @@ class Businesses extends Component {
   };
 
   componentWillMount() {
-    console.log(this.props);
     this.props.getBusinesses();
   }
 
@@ -45,6 +44,7 @@ class Businesses extends Component {
                   <Button
                     variant="link"
                     href={`/business/${business.business_id}`}
+                    className="Business-list"
                   >
                     {business.name}
                   </Button>

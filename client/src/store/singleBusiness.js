@@ -19,11 +19,6 @@ const setBusiness = (business) => ({
   business,
 });
 
-// export const sortAlbums = (sortKey) => ({
-//   type: SORT_ALBUMS,
-//   sortKey,
-// });
-
 /**
  * THUNK CREATORS
  */
@@ -43,8 +38,6 @@ export default function (state = initialState, action) {
   switch (action.type) {
     case SET_BUSINESS:
       return action.business;
-    // case SORT_ALBUMS:
-    //   return _.sortBy(state, [action.sortKey]);
     default:
       return state;
   }

@@ -4,7 +4,6 @@ import axios from "axios";
  * ACTION TYPES
  */
 const SET_BUSINESSES = "SET_BUSINESSES";
-// const SORT_ALBUMS = 'SORT_ALBUMS'
 
 /**
  * INITIAL STATE
@@ -18,11 +17,6 @@ const setBusinesses = (businesses) => ({
   type: SET_BUSINESSES,
   businesses,
 });
-
-// export const sortAlbums = (sortKey) => ({
-//   type: SORT_ALBUMS,
-//   sortKey,
-// });
 
 /**
  * THUNK CREATORS
@@ -43,8 +37,6 @@ export default function (state = initialState, action) {
   switch (action.type) {
     case SET_BUSINESSES:
       return action.businesses;
-    // case SORT_ALBUMS:
-    //   return _.sortBy(state, [action.sortKey]);
     default:
       return state;
   }
