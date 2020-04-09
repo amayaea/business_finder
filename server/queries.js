@@ -6,7 +6,8 @@ const queries = {
     WHERE b.business_id = '${businessId}';`,
   selectByZip: (zipCode) =>
     `SELECT * FROM business WHERE postal_code = '${zipCode}' LIMIT 200`,
-  selectAll: () => `SELECT * FROM see100`,
+  selectAll: () => `SELECT * FROM see100 ORDER BY RAND()`,
+  selectBestRated: () => `SELECT * FROM bestRated ORDER BY RAND()`,
   selectByCity: (city) =>
     `SELECT * FROM business WHERE city LIKE '%${city}%' LIMIT 200`,
   searchByName: (search) =>

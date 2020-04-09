@@ -21,9 +21,11 @@ const setBusinesses = (businesses) => ({
 /**
  * THUNK CREATORS
  */
-export const getBusinesses = () => async (dispatch) => {
+export const getBusinesses = (bestRated) => async (dispatch) => {
   try {
-    const businesses = await axios.get("/api/businesses");
+    let businesses = null;
+    if (bestRated) businesses = await axios.get("/api/businesses/best-rated");
+    else businesses = await axios.get("/api/businesses");
     dispatch(setBusinesses(businesses.data));
   } catch (err) {
     console.error(err);

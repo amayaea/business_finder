@@ -11,10 +11,17 @@ app.get("/api/businesses", (req, res) => {
   });
 });
 
+// Get best rated businesses
+app.get("/api/businesses/best-rated", (req, res) => {
+  db.query(queries.selectBestRated(), (err, result) => {
+    if (err) throw err;
+    res.send(result);
+  });
+});
+
 // Query for businesses by city
 app.get("/api/businesses/city/:city", (req, res, next) => {
   try {
-    console.log("this one");
     db.query(queries.selectByCity(req.params.city), (err, result) => {
       if (err) throw err;
       res.send(result);
@@ -29,7 +36,6 @@ app.get("/api/businesses/name/:name", (req, res, next) => {
   try {
     db.query(queries.searchByName(req.params.name), (err, result) => {
       if (err) throw err;
-      console.log(result);
       res.send(result);
     });
   } catch (err) {
@@ -40,7 +46,6 @@ app.get("/api/businesses/name/:name", (req, res, next) => {
 // Query for businesses by zip
 app.get("/api/businesses/zip/:zip", (req, res, next) => {
   try {
-    console.log("in route");
     db.query(queries.selectByZip(req.params.zip), (err, result) => {
       if (err) throw err;
       res.send(result);

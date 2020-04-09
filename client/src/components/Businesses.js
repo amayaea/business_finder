@@ -10,7 +10,9 @@ import StarRatingComponent from "react-star-rating-component";
 class Businesses extends Component {
   componentWillMount() {
     const search = this.props.location.pathname.split("/");
-    if (!this.props.match.isExact)
+    if (this.props.location.pathname === "/best-rated") {
+      this.props.getBusinesses(true);
+    } else if (!this.props.match.isExact)
       this.props.handleSearch(search[3], search[2]);
     else this.props.getBusinesses();
   }
@@ -62,7 +64,7 @@ const mapStateToProps = (state) => ({
 });
 
 const dispatchToProps = (dispatch) => ({
-  getBusinesses: () => dispatch(getBusinesses()),
+  getBusinesses: (best) => dispatch(getBusinesses(best)),
   handleSearch: (search, col) => dispatch(searchBusinesses(search, col)),
 });
 
