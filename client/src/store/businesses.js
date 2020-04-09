@@ -30,6 +30,15 @@ export const getBusinesses = () => async (dispatch) => {
   }
 };
 
+export const searchBusinesses = (search, col) => async (dispatch) => {
+  try {
+    const businesses = await axios.get(`/api/businesses/${col}/${search}`);
+    dispatch(setBusinesses(businesses.data));
+  } catch (err) {
+    console.error(err);
+  }
+};
+
 /**
  * REDUCER
  */

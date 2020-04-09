@@ -5,10 +5,12 @@ const queries = {
     INNER JOIN attributes a on a.business_id = b.business_id
     WHERE b.business_id = '${businessId}';`,
   selectByZip: (zipCode) =>
-    `SELECT * FROM business WHERE postal_code = '${zipCode}'`,
+    `SELECT * FROM business WHERE postal_code = '${zipCode}' LIMIT 200`,
   selectAll: () => `SELECT * FROM see100`,
-  selectByCity: (city) => `SELECT * FROM business WHERE city LIKE '%${city}%'`,
-  searchByName: (search) => `SELECT * FROM business WHERE name LIKE '%$$%';`,
+  selectByCity: (city) =>
+    `SELECT * FROM business WHERE city LIKE '%${city}%' LIMIT 200`,
+  searchByName: (search) =>
+    `SELECT * FROM business WHERE name LIKE '%${search}%' LIMIT 200;`,
   getCheckins: (businessId) => {
     const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
     const date = new Date();

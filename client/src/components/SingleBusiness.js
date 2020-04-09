@@ -53,20 +53,13 @@ class SingleBusiness extends Component {
             {bus && ` ${bus.review_count} reviews`}
             <br />
             <h4>Hours:</h4>
-            {bus && `Sunday: ${bus.sunday}`}
-            <br />
-            {bus && `Monday: ${bus.monday}`}
-            <br />
-            {bus && `Tuesday: ${bus.tuesday}`}
-            <br />
-            {bus && `Wednesday: ${bus.wednesday}`}
-            <br />
-            {bus && `Thursday: ${bus.thursday}`}
-            <br />
-            {bus && `Friday: ${bus.friday}`}
-            <br />
-            {bus && `Saturday: ${bus.saturday}`}
-            <br />
+            <div>{bus && `Sunday: ${bus.sunday}`}</div>
+            <div>{bus && `Monday: ${bus.monday}`}</div>
+            <div>{bus && `Tuesday: ${bus.tuesday}`}</div>
+            <div>{bus && `Wednesday: ${bus.wednesday}`}</div>
+            <div>{bus && `Thursday: ${bus.thursday}`}</div>
+            <div>{bus && `Friday: ${bus.friday}`}</div>
+            <div>{bus && `Saturday: ${bus.saturday}`}</div>
             <br />
             <h4>Categories:</h4>
             {bus && bus.categories.split(";").join(", ")}
@@ -84,8 +77,13 @@ class SingleBusiness extends Component {
                 );
               })}
             <br />
-            <br />
             <h4>Attributes:</h4>
+            {bus &&
+              Object.keys(bus).map((key, index) => {
+                if (index >= 20) {
+                  return <div key={key}>{`${key}: ${bus[key]}`}</div>;
+                } else return null;
+              })}
           </Media.Body>
         </Media>
       </Container>

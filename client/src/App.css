@@ -1,6 +1,6 @@
 .App-header {
   background-color: #222;
-  height: 150px;
+  height: 175px;
   padding: 20px;
   color: white;
 }
@@ -16,4 +16,8 @@
 .Business-list.btn {
   padding-left: 0;
   margin-left: 0;
+}
+
+.search-button.btn {
+  margin-right: 8px;
 }

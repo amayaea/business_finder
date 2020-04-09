@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
-import { getBusinesses } from "../store";
+import { getBusinesses, searchBusinesses } from "../store";
 import Media from "react-bootstrap/Media";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
@@ -9,7 +9,10 @@ import StarRatingComponent from "react-star-rating-component";
 
 class Businesses extends Component {
   componentWillMount() {
-    this.props.getBusinesses();
+    const search = this.props.location.pathname.split("/");
+    if (!this.props.match.isExact)
+      this.props.handleSearch(search[3], search[2]);
+    else this.props.getBusinesses();
   }
 
   render() {
@@ -60,6 +63,7 @@ const mapStateToProps = (state) => ({
 
 const dispatchToProps = (dispatch) => ({
   getBusinesses: () => dispatch(getBusinesses()),
+  handleSearch: (search, col) => dispatch(searchBusinesses(search, col)),
 });
 
 export default withRouter(
