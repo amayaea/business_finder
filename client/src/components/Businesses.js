@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
 import { getBusinesses } from "../store";
@@ -9,15 +8,6 @@ import Button from "react-bootstrap/Button";
 import StarRatingComponent from "react-star-rating-component";
 
 class Businesses extends Component {
-  static propTypes = {
-    getBusinesses: PropTypes.func.isRequired,
-    businesses: PropTypes.array.isRequired,
-  };
-
-  static defaultProps = {
-    businesses: [],
-  };
-
   componentWillMount() {
     this.props.getBusinesses();
   }

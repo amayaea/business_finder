@@ -9,7 +9,7 @@ const SET_BUSINESS = "SET_BUSINESS";
 /**
  * INITIAL STATE
  */
-const initialState = [];
+const initialState = {};
 
 /**
  * ACTION CREATORS

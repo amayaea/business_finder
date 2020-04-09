@@ -30,7 +30,15 @@ app.get("/api/business/:businessId", (req, res, next) => {
       queries.selectOne(req.params.businessId.substring(1)),
       (err, result) => {
         if (err) throw err;
-        res.send(result);
+        const business = { bus: result };
+        db.query(
+          queries.getCheckins(req.params.businessId.substring(1)),
+          (err, result) => {
+            if (err) throw err;
+            business.checkins = result;
+            res.send(business);
+          }
+        );
       }
     );
   } catch (err) {

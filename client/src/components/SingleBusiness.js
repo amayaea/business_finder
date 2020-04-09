@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
 import { getBusiness } from "../store";
@@ -9,15 +8,6 @@ import Badge from "react-bootstrap/Badge";
 import StarRatingComponent from "react-star-rating-component";
 
 class SingleBusiness extends Component {
-  static propTypes = {
-    getBusiness: PropTypes.func.isRequired,
-    singleBusiness: PropTypes.array.isRequired,
-  };
-
-  static defaultProps = {
-    singleBusiness: [],
-  };
-
   componentWillMount() {
     const businessId = this.props.match.params.businessId;
     this.props.getBusiness(businessId);
@@ -25,7 +15,10 @@ class SingleBusiness extends Component {
 
   render() {
     const business = this.props.singleBusiness;
-    const bus = business[0];
+    let bus,
+      checkins = undefined;
+    if (business.bus) bus = business.bus[0];
+    if (business.checkins) checkins = business.checkins;
     return (
       <Container>
         <br />
@@ -76,8 +69,23 @@ class SingleBusiness extends Component {
             <br />
             <br />
             <h4>Categories:</h4>
-            {bus && bus.categories.split(",").join(", ")}
+            {bus && bus.categories.split(";").join(", ")}
             <br />
+            <br />
+            <h4>Checkins Today:</h4>
+            {checkins &&
+              checkins.map((checkin) => {
+                return (
+                  <div
+                    key={`${checkin.weekday}${checkin.hour}`}
+                  >{`${checkin.hour.substring(0, checkin.hour.length - 2)} ${
+                    checkin.checkins
+                  }`}</div>
+                );
+              })}
+            <br />
+            <br />
+            <h4>Attributes:</h4>
           </Media.Body>
         </Media>
       </Container>
