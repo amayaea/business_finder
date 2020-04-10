@@ -36,7 +36,7 @@ app.get("/api/businesses/name/:name", (req, res, next) => {
   try {
     db.query(queries.searchByName(req.params.name), (err, result) => {
       if (err) throw err;
-      res.send(result);
+      res.send(result[0]);
     });
   } catch (err) {
     next(err);
@@ -62,7 +62,7 @@ app.get("/api/business/:businessId", (req, res, next) => {
       queries.selectOne(req.params.businessId.substring(1)),
       (err, result) => {
         if (err) throw err;
-        const business = { bus: result };
+        const business = { bus: result[0] };
         db.query(
           queries.getCheckins(req.params.businessId.substring(1)),
           (err, result) => {

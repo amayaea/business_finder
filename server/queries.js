@@ -1,17 +1,12 @@
 const queries = {
-  selectOne: (businessId) =>
-    `SELECT * FROM business b
-    INNER JOIN hours h on h.business_id = b.business_id
-    INNER JOIN attributes a on a.business_id = b.business_id
-    WHERE b.business_id = '${businessId}';`,
+  selectOne: (businessId) => `CALL getBusiness('${businessId}');`,
   selectByZip: (zipCode) =>
     `SELECT * FROM business WHERE postal_code = '${zipCode}' LIMIT 200`,
-  selectAll: () => `SELECT * FROM see100 ORDER BY RAND()`,
-  selectBestRated: () => `SELECT * FROM bestRated ORDER BY RAND()`,
+  selectAll: () => `SELECT * FROM see100`,
+  selectBestRated: () => `SELECT * FROM bestRated`,
   selectByCity: (city) =>
     `SELECT * FROM business WHERE city LIKE '%${city}%' LIMIT 200`,
-  searchByName: (search) =>
-    `SELECT * FROM business WHERE name LIKE '%${search}%' LIMIT 200;`,
+  searchByName: (search) => `CALL queryByName('${search}');`,
   getCheckins: (businessId) => {
     const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
     const date = new Date();
