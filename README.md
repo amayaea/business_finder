@@ -11,9 +11,6 @@ npm install
 # Install dependencies for client
 npm run client-install
 
-# Install dependencies for client
-npm run client-install
-
 # Run the client & server with concurrently
 npm run dev
 
