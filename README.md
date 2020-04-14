@@ -19,14 +19,16 @@ npm run dev
 
 ## App Info
 
+### Stack
+
+MySQL, Node.js, Express, React, Redux, React-Bootstrap
+
+### Versions
+
+MySQL Workbench: v8.0.19
+Node: v10.16.0
+MySQL: v8.0.19 for osx10.14 on x86_64
+
 ### Authors
 
 Emilio Amaya and Hurst Clinton
-
-### Version
-
-1.0.0
-
-### License
-
-This project is licensed under the MIT License
